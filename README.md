@@ -1,73 +1,158 @@
 <p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="200" alt="Nest Logo" /></a>
+    <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="200" alt="Nest Logo" /></a>
+    <a href="https://necord.org/" target="blank"><img src="https://necord.org/img/logo.png" width="200" alt="Nest Logo" /></a>
 </p>
 
-[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
-[circleci-url]: https://circleci.com/gh/nestjs/nest
+---
+Haz click para ver.
 
-  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
-    <p align="center">
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
-<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
-<a href="https://coveralls.io/github/nestjs/nest?branch=master" target="_blank"><img src="https://coveralls.io/repos/github/nestjs/nest/badge.svg?branch=master#9" alt="Coverage" /></a>
-<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
-<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg"/></a>
-    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
-  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow"></a>
-</p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
+<details>
+<summary id="descargo-de-responsabilidad">Descargo de Responsabilidad:</summary>
 
-## Description
+Este bot de Discord, utilizando la biblioteca Necord, tiene fines recreativos y de entretenimiento. 
+La información proporcionada por el bot puede no ser completamente precisa o actualizada. No me hago responsable de las decisiones tomadas basándose en la información proporcionada por el bot.
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+El uso del bot está sujeto a cambios sin previo aviso. No garantizamos la disponibilidad continua, la funcionalidad o la precisión de los comandos proporcionados.
 
-## Installation
+Este bot puede contener enlaces a sitios web de terceros. No respaldamos ni asumimos responsabilidad por el contenido de esos sitios.
 
+Los usuarios son responsables de cumplir con los términos de servicio de Discord y cualquier otra regulación aplicable al utilizar este bot.
+
+Al utilizar este bot, aceptas este descargo de responsabilidad y los términos de uso asociados.
+
+</details>
+
+---
+
+## Descripción
+
+###### Este es un proyecto basado en Necord realizado sobre Nest a modo de prueba y tutorial (pero en español).
+
+[//]: # (## Instalación)
+
+[//]: # ()
+[//]: # (```bash)
+
+[//]: # ($ yarn install)
+
+[//]: # (```)
+
+[//]: # ()
+[//]: # (## Correr app)
+
+[//]: # ()
+[//]: # (```bash)
+
+[//]: # (# development)
+
+[//]: # ($ yarn run start)
+
+[//]: # ()
+[//]: # (# watch mode)
+
+[//]: # ($ yarn run start:dev)
+
+[//]: # ()
+[//]: # (# production mode)
+
+[//]: # ($ yarn run start:prod)
+
+[//]: # (```)
+_________________________
+
+## Antes de empezar, necesitamos intalar algunas cositas:
+
+### Instalar [Necord](https://necord.org/), y su dependencia [Discord.js](https://discord.js.org/)
 ```bash
-$ yarn install
+$ yarn add necord discord.js
 ```
 
-## Running the app
+### CLI: Interfaz de Línea de Comandos
 
 ```bash
-# development
-$ yarn run start
-
-# watch mode
-$ yarn run start:dev
-
-# production mode
-$ yarn run start:prod
+$ yarn global add @nestjs/cli
+#Comandos propios de Necord
+$ yarn add --dev @necord/schematics
 ```
 
-## Test
+# Configuración inicial del bot
+Primero y principal necesitamos configurar nuestro bot con el token que nos provee Discord.
 
+[Discord Developer Portal](https://discord.com/developers/applications)
+> 1. New Aplication.
+> 2. Ingresamos el nombre de como lo llamaremos al bot y aceptamos términos.
+> 3. Nos vamos a la pestaña **Bot** y presionamos en **Reset token** para obtener nuestro token.
+> 4. Lo copiamos y anotamos para el siguiente paso.
+> 5. Vamos a la pestaña **OAuth**.
+> 6. En 'Default Authorization Link' elegimos **In-app Authorization**.
+> 7. Nos aparecen los **SCOPES**, seleccionamos **bot** y **applications.conmmands**.
+> 8. Luego en **BOT PERMISSIONS** elegimos los permisos que veas adecuados al desarrollo.
+> 9. Una ves seleccionados, en la parte inferior de la página se generará un link, el cual es al que debes ir para agregar el bot a tu servidor.
+
+## Variables de entorno
+
+Construyo las variables de entorno en el archivo ```.env``` para la configuraciones de token y otras futuras propiedades:
+
+> Renombrar ```.env-template``` a ```.env```
+
+### Instalamos dependencias:
+Éstas dependencias nos permitirán hacer uso de las variables de entorno:
 ```bash
-# unit tests
-$ yarn run test
-
-# e2e tests
-$ yarn run test:e2e
-
-# test coverage
-$ yarn run test:cov
+$ yarn add @nestjs/config dotenv
 ```
+e importamos `ConfigModule.forRoot()` en el modulo `app.module.ts`.
 
-## Support
+<details>
+  <summary><code aria-atomic="true">Codigo: app.module.ts</code></summary>
 
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
+```typescript
+import { Module } from '@nestjs/common';
+import { ConfigModule } from "@nestjs/config";
 
-## Stay in touch
+@Module({ 
+  imports: [
+    ConfigModule.forRoot(),
+  ],
+  controllers: [], 
+  providers: [],
+})
+export class AppModule {}
+```
+</details>
 
-- Author - [Kamil Myśliwiec](https://kamilmysliwiec.com)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
+Luego, importamos `NecordModule.forRoot()` y configuramos nuestra variable de entorno con el mismo nombre que se encontraba en `.env` de la siguiente manera:
+````typescript
+NecordModule.forRoot({
+  token: process.env.ENV_TOKEN_NAME,
+})
+````
+<details>
+  <summary><code aria-atomic="true">Codigo: app.module.ts</code></summary>
 
-## License
+```typescript
+import { Module } from '@nestjs/common';
+import { ConfigModule } from "@nestjs/config";
+import { NecordModule } from "necord";
 
-Nest is [MIT licensed](LICENSE).
+@Module({ 
+  imports: [
+    ConfigModule.forRoot(),
+    NecordModule.forRoot({
+      token: process.env.DISCORD_TOKEN,
+      //y agregamos y guild para empezar a detectar el token y levantar bot
+      intents: [IntentsBitField.Flags.Guilds],
+    }),
+  ],
+  controllers: [], 
+  providers: [],
+})
+export class AppModule {}
+```
+</details>
+
+Una vez realizado todo lo anterior, ya podemos poner en marcha para probar por primera vez nuestro bot funcionando:
+```bash
+$ yarn start:dev
+```
+___
+
