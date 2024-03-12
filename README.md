@@ -31,7 +31,7 @@ Al utilizar este bot, aceptas este descargo de responsabilidad y los términos d
 
 _________________________
 
-## Antes de empezar, necesitamos intalar algunas cositas:
+## Antes de empezar, necesitamos instalar algunas cositas:
 
 ### Instalar [Necord](https://necord.org/), y su dependencia [Discord.js](https://discord.js.org/)
 ```bash
@@ -55,14 +55,14 @@ Primero y principal necesitamos configurar nuestro bot con el token que nos prov
 > 3. Nos vamos a la pestaña **Bot** y presionamos en **Reset token** para obtener nuestro token.
 > 4. Lo copiamos y anotamos para el siguiente paso.
 > 5. Vamos a la pestaña **OAuth**.
-> 6. En 'Default Authorization Link' elegimos **In-app Authorization**.
-> 7. Nos aparecen los **SCOPES**, seleccionamos **bot** y **applications.conmmands**.
-> 8. Luego en **BOT PERMISSIONS** elegimos los permisos que veas adecuados al desarrollo.
+> 6. En **Default Authorization Link** elegimos **In-app Authorization**.
+> 7. Nos aparecen los **SCOPES**, seleccionamos **bot** y **applications.commands**.
+> 8. Luego, en **BOT PERMISSIONS** elegimos los permisos que veas más adecuados al desarrollo.
 > 9. Una ves seleccionados, en la parte inferior de la página se generará un link, el cual es al que debes ir para agregar el bot a tu servidor.
 
 ## Variables de entorno
 
-Construyo las variables de entorno en el archivo ```.env``` para la configuraciones de token y otras futuras propiedades:
+Construyo las variables de entorno en el archivo ```.env``` para la configuracion de token y futuras propiedades:
 
 > Renombrar ```.env-template``` a ```.env```
 
