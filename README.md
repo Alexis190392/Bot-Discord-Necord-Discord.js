@@ -1,7 +1,9 @@
-<p align="center">
-    <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="200" alt="Nest Logo" /></a>
+<p align="center" >
+    <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="200" alt="Nest Logo" /></a></br>
     <a href="https://necord.org/" target="blank"><img src="https://necord.org/img/logo.png" width="200" alt="Nest Logo" /></a>
+    <a href="https://necord.org/" target="blank"><img src="https://camo.githubusercontent.com/94402c561f7851d7d3c899ea70b282bd177f344319f08cb1d743de36f00cf020/68747470733a2f2f646973636f72642e6a732e6f72672f7374617469632f6c6f676f2e737667" width="200" alt="Nest Logo" /></a>
 </p>
+
 
 ---
 Haz click para ver.
