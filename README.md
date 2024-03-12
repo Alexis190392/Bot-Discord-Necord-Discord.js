@@ -133,7 +133,7 @@ $ yarn start:dev
 ```
 
 >  ###### NOTA:
->  ###### Para los casos en que el bot no responda o funcione correctamente mientras hacemos pruebas, pero nuestro codigo está corriendo sin errores:
+>  ###### Para los casos en que el bot no responda o funcione incorrectamente mientras hacemos pruebas, pero nuestro codigo está corriendo sin errores:
 >  ###### 1. Expulsar el bot del servidor
 >  ###### 2. Volver a invitarlo mediante el enlace que guardamos en un comienzo.
 > > ###### Esta falla suele suceder, debido a la cache de discord. Para evitar demoras en las pruebas, la desinstalacion e instalacion del bot genera una nueva caché dejando invalidada la anterior.
