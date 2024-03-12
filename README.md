@@ -9,7 +9,7 @@ Haz click para ver.
 <details>
 <summary id="descargo-de-responsabilidad">Descargo de Responsabilidad:</summary>
 
-Este bot de Discord, utilizando la biblioteca Necord, tiene fines recreativos y de entretenimiento. 
+<p>Este bot de Discord, utilizando la biblioteca Necord, tiene fines recreativos y de entretenimiento. 
 La información proporcionada por el bot puede no ser completamente precisa o actualizada. No me hago responsable de las decisiones tomadas basándose en la información proporcionada por el bot.
 
 El uso del bot está sujeto a cambios sin previo aviso. No garantizamos la disponibilidad continua, la funcionalidad o la precisión de los comandos proporcionados.
@@ -18,8 +18,7 @@ Este bot puede contener enlaces a sitios web de terceros. No respaldamos ni asum
 
 Los usuarios son responsables de cumplir con los términos de servicio de Discord y cualquier otra regulación aplicable al utilizar este bot.
 
-Al utilizar este bot, aceptas este descargo de responsabilidad y los términos de uso asociados.
-
+Al utilizar este bot, aceptas este descargo de responsabilidad y los términos de uso asociados.</p>
 </details>
 
 ---
@@ -28,36 +27,6 @@ Al utilizar este bot, aceptas este descargo de responsabilidad y los términos d
 
 ###### Este es un proyecto basado en Necord realizado sobre Nest a modo de prueba y tutorial (pero en español).
 
-[//]: # (## Instalación)
-
-[//]: # ()
-[//]: # (```bash)
-
-[//]: # ($ yarn install)
-
-[//]: # (```)
-
-[//]: # ()
-[//]: # (## Correr app)
-
-[//]: # ()
-[//]: # (```bash)
-
-[//]: # (# development)
-
-[//]: # ($ yarn run start)
-
-[//]: # ()
-[//]: # (# watch mode)
-
-[//]: # ($ yarn run start:dev)
-
-[//]: # ()
-[//]: # (# production mode)
-
-[//]: # ($ yarn run start:prod)
-
-[//]: # (```)
 _________________________
 
 ## Antes de empezar, necesitamos intalar algunas cositas:
