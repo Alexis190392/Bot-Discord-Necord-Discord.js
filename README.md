@@ -25,13 +25,19 @@ Al utilizar este bot, aceptas este descargo de responsabilidad y los términos d
 
 ---
 
-## Descripción
+## Descripción rápida
 
-###### Este es un proyecto basado en Necord realizado sobre Nest a modo de prueba y tutorial (pero en español).
+#### Este es un proyecto basado en Necord realizado sobre Nest a modo de prueba y tutorial (pero en español).
 
-_________________________
+___
 
 ## Antes de empezar, necesitamos instalar algunas cositas:
+
+
+
+[//]: # (> ### TIP )
+>> Cabe aclarar que es necesario tener instalado [Node.js](https://nodejs.org/)
+
 
 ### Instalar [Necord](https://necord.org/), y su dependencia [Discord.js](https://discord.js.org/)
 ```bash
@@ -58,8 +64,8 @@ Primero y principal necesitamos configurar nuestro bot con el token que nos prov
 > 6. En **Default Authorization Link** elegimos **In-app Authorization**.
 > 7. Nos aparecen los **SCOPES**, seleccionamos **bot** y **applications.commands**.
 > 8. Luego, en **BOT PERMISSIONS** elegimos los permisos que veas más adecuados al desarrollo.
-> 9. Una ves seleccionados, en la parte inferior de la página se generará un link, el cual es al que debes ir para agregar el bot a tu servidor.
-
+> 9. Una ves seleccionados, en la parte inferior de la página se generará un enlace, el cual es al que debes ir para agregar el bot a tu servidor.
+> > ###### **NOTA**: Guarda el enlace para uso futuro
 ## Variables de entorno
 
 Construyo las variables de entorno en el archivo ```.env``` para la configuracion de token y futuras propiedades:
@@ -125,5 +131,76 @@ Una vez realizado todo lo anterior, ya podemos poner en marcha para probar por p
 ```bash
 $ yarn start:dev
 ```
+
+>  ###### NOTA:
+>  ###### Para los casos en que el bot no responda o funcione correctamente mientras hacemos pruebas, pero nuestro codigo está corriendo sin errores:
+>  ###### 1. Expulsar el bot del servidor
+>  ###### 2. Volver a invitarlo mediante el enlace que guardamos en un comienzo.
+> > ###### Esta falla suele suceder, debido a la cache de discord. Para evitar demoras en las pruebas, la desinstalacion e instalacion del bot genera una nueva caché dejando invalidada la anterior.
+> 
+> 
+> 
 ___
 
+# Ahora comenzemos...
+## Slash command
+
+Para poder realizar los comandos de barra diagonal ( **/** ) o slash command, primero generamos un nuevo recurso:
+
+```bash
+$ nest g res slash-commands
+```
+Solo nos quedaremos con el **module** y **services**. (Lo demas se puede eliminar por el momento).
+
+Con el decorador `@SlashCommand()` podemos empezar a generar el primer comando de barra diagonal o 'Slash command'.
+
+Para generarlo, deberemos ingresar algunas propiedades, principalmente `name` que hacer referencia al comando `/name`, y `description` para mostrar una descripción del comando:
+
+```typescript
+@SlashCommand({
+  name: 'ping',
+  description: 'Ping-Pong Command',
+})
+```
+Luego, usamos el decorador ``@Context`` para enviar argumentos, en este caso ``[interaction]`` y del tipo ``SlashCommandContext``
+
+```typescript
+@SlashCommand({
+  name: 'ping',
+  description: 'Ping-Pong Command',
+})
+public async onPing(@Context() [interaction]: SlashCommandContext){
+  ....
+}
+```
+Y para devolver la respuesta por mensaje, retornamos la respuesta de `[interaction]` mediante ``.reply`` añadiendo la propiedad ``content`` y el valor a retornar.
+
+```typescript
+return interaction.reply({ content: 'Pong!' });
+```
+
+<details>
+  <summary><code aria-atomic="true">Codigo: slash-commands.service.ts</code></summary>
+
+```typescript
+import { Injectable } from '@nestjs/common';
+import { Context,
+  SlashCommand,
+  SlashCommandContext
+} from 'necord';
+
+@Injectable()
+export class SlashCommandsService {
+
+  @SlashCommand({
+    name: 'ping',
+    description: 'Ping-Pong Command',
+  })
+  public async onPing(@Context() [interaction]: SlashCommandContext) {
+    return interaction.reply({ content: 'Pong!' });
+  }
+}
+```
+</details>
+
+---
