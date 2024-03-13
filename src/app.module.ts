@@ -4,6 +4,7 @@ import * as process from "process";
 import { NecordModule } from "necord";
 import { SlashCommandsModule } from './slash-commands/slash-commands.module';
 import { IntentsBitField } from 'discord.js';
+import { ContextMenusModule } from './context-menus/context-menus.module';
 
 
 @Module({
@@ -14,6 +15,7 @@ import { IntentsBitField } from 'discord.js';
       intents:[IntentsBitField.Flags.Guilds]
     }),
     SlashCommandsModule,
+    ContextMenusModule,
   ],
 })
 export class AppModule {}

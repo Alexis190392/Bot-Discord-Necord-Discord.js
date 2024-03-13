@@ -80,7 +80,7 @@ $ yarn add @nestjs/config dotenv
 e importamos `ConfigModule.forRoot()` en el modulo `app.module.ts`.
 
 <details>
-  <summary><code aria-atomic="true">Codigo: app.module.ts</code></summary>
+  <summary><code aria-atomic="true">Código: app.module.ts</code></summary>
 
 ```typescript
 import { Module } from '@nestjs/common';
@@ -104,7 +104,7 @@ NecordModule.forRoot({
 })
 ````
 <details>
-  <summary><code aria-atomic="true">Codigo: app.module.ts</code></summary>
+  <summary><code aria-atomic="true">Código: app.module.ts</code></summary>
 
 ```typescript
 import { Module } from '@nestjs/common';
@@ -133,7 +133,7 @@ $ yarn start:dev
 ```
 
 >  ###### NOTA:
->  ###### Para los casos en que el bot no responda o funcione incorrectamente mientras hacemos pruebas, pero nuestro codigo está corriendo sin errores:
+>  ###### Para los casos en que el bot no responda o funcione incorrectamente mientras hacemos pruebas, pero nuestro código está corriendo sin errores:
 >  ###### 1. Expulsar el bot del servidor
 >  ###### 2. Volver a invitarlo mediante el enlace que guardamos en un comienzo.
 > > ###### Esta falla suele suceder, debido a la cache de discord. Para evitar demoras en las pruebas, la desinstalacion e instalacion del bot genera una nueva caché dejando invalidada la anterior.
@@ -180,7 +180,7 @@ return interaction.reply({ content: 'Pong!' });
 ```
 
 <details>
-  <summary><code aria-atomic="true">Codigo: slash-commands.service.ts</code></summary>
+  <summary><code aria-atomic="true">Código: slash-commands.service.ts</code></summary>
 
 ```typescript
 import { Injectable } from '@nestjs/common';
@@ -202,5 +202,46 @@ export class SlashCommandsService {
 }
 ```
 </details>
+
+---
+## Context menus
+
+Para generar menues contextuales, tanto en usuarios ccomo mensajes, usaremos el decorador ``@UserCommand()``. Agregandole la propiedad `name:` nombraremos nuestra opcion del menu.
+
+```typescript
+ @UserCommand({ name: 'Obtener avatar' })
+    public async getUserAvatar(
+        @Context() [interaction]: UserCommandContext,
+        ...
+    ) {
+        return interaction.reply({
+          ....
+        });
+    }
+```
+
+![img.png](images/images-readme/img.png)
+
+Para esto podriamos hacer, por ejemplo un embed que nos muestre el nombre del usuario y la imagen de perfil.
+
+1. Primero agregaremos `@TargetUser() user: User` para obtener el usuario.
+2. Retornaremos, en este caso, un embed, conformado solo por el el nombre del usuario y la imagen de perfil.
+```typescript
+@UserCommand({ name: 'Obtener avatar' })
+public async getUserAvatar(
+  @Context() [interaction]: UserCommandContext,
+  @TargetUser() user: User
+) {
+  return interaction.reply({
+    embeds: [
+      new EmbedBuilder().setTitle(`Avatar de ${user.username}`).setImage(user.displayAvatarURL({size:4096}))
+    ]
+  });
+}
+```
+
+>###### Puede ver más en [EmbedBuilder](https://discord.js.org/)
+El resultado de este código sera de la siguiente manera:\
+![img.png](images/images-readme/img2.png)
 
 ---
