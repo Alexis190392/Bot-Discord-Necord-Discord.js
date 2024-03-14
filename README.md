@@ -245,3 +245,35 @@ El resultado de este código sera de la siguiente manera:\
 ![img.png](images/images-readme/img2.png)
 
 ---
+## Components
+
+### Buttons
+
+Para la creacion de Botones utilizamos `ButtonBuilder()`
+```typescript
+new ButtonBuilder()
+  .setCustomId('primary')
+  .setLabel('Primary')
+  .setStyle(ButtonStyle.Primary);
+```
+>> ###### Ver mas en: [ButtonBuilder()](https://discord.js.org/docs/packages/builders/main/ButtonBuilder:Class)
+> 
+Luego con ``ActionRowBuilder()`` agregamos cada boton generado a una fila de botones:
+
+```typescript
+const rowbuttons = new ActionRowBuilder()
+      .addComponents(primary, secondary, success, danger, link);
+```
+
+Y luego generamos la respuesta a mostrar, colocanto el contenido y la fila de botones: 
+
+````typescript
+await interaction.reply({
+  content: 'Selecciona un botón',
+  components: [rowbuttons],
+    });
+```` 
+![img_1.png](images/images-readme/img3.png)
+ ___
+
+
