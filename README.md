@@ -340,7 +340,7 @@ new RoleSelectMenuBuilder()
 ```
 </details>
 <details>
-  <summary><code aria-atomic="true">Mentionable Select</code></summary>
+  <summary><code aria-atomic="true">Channel Select</code></summary>
 
 ```typescript
 new ChannelSelectMenuBuilder()
@@ -351,7 +351,7 @@ new ChannelSelectMenuBuilder()
 ```
 </details>
 <details>
-  <summary><code aria-atomic="true">Channel Select</code></summary>
+  <summary><code aria-atomic="true">Mentionable Select</code></summary>
 
 ```typescript
 new MentionableSelectMenuBuilder()
