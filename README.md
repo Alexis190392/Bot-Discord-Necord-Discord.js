@@ -1,3 +1,5 @@
+> El desarrollo de este repositorio se encuenta en desarrollo al dia de la fecha: 15/03/2024
+
 <p align="center" >
     <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="200" alt="Nest Logo" /></a></br>
     <a href="https://necord.org/" target="blank"><img src="https://necord.org/img/logo.png" width="200" alt="Nest Logo" /></a>
