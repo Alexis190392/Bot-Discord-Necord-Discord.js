@@ -1,13 +1,15 @@
 import { Injectable } from '@nestjs/common';
 import { ActionRowBuilder } from 'discord.js';
 import { Buttons } from './components.buttons';
-import { Button, Context} from 'necord';
+import { Button, Context, StringSelect } from 'necord';
+import { StringSelectMenu } from './components.string-select';
 
 @Injectable()
 export class ComponentsService {
 
   constructor(
     private readonly buttons: Buttons,
+    private readonly stringSelect: StringSelectMenu,
   ) {
   }
 
@@ -57,54 +59,36 @@ export class ComponentsService {
     }
 
   }
-  //
-  //
-  // @SlashCommand({
-  //   name: 'boton',
-  //   description: 'boton',
-  // })
-  // @Button('click/:value')
-  // public async onButton(@Context() [interaction]) {
-  //
-  //   const primary = this.buttons.createButton('primary',ButtonStyle.Primary,'primary');
-  //   const secondary = this.buttons.createButton('secondary',ButtonStyle.Secondary,'secondary');
-  //   const success = this.buttons.createButton('success',ButtonStyle.Success,'success');
-  //   const danger = this.buttons.createButton('danger',ButtonStyle.Danger,'danger');
-  //   const link = this.buttons.createButton('link',ButtonStyle.Link,'link','http://localhost');
-  //
-  //
-  //   const rowButtons = new ActionRowBuilder()
-  //     .addComponents(primary, secondary, success, danger, link);
-  //
-  //   const response = await interaction.reply({
-  //     content: 'Selecciona un botón',
-  //     components: [rowButtons],
-  //   });
-  //
-  //   const collectorFilter = ({ user }) => user.id === interaction.user.id;
-  //
-  //   try {
-  //     const confirmation = await response.awaitMessageComponent({ filter: collectorFilter, time: 60000 });
-  //     const customId = confirmation.customId;
-  //
-  //     const buttonMessages = {
-  //       [primary[customId]]: 'Presionaste primary',
-  //       [secondary[customId]]: 'Presionaste secondary',
-  //       [success[customId]]: 'Presionaste success',
-  //       [danger[customId]]: 'Presionaste danger',
-  //       [link[customId]]: 'Presionaste link'
-  //     };
-  //
-  //     const message = buttonMessages[customId];
-  //     if (message) {
-  //       await confirmation.update({ content: message });
-  //     } else {
-  //       throw new Error('CustomId no válido');
-  //     }
-  //   } catch (error) {
-  //     await response.edit({ content: 'Tiempo de respuesta agotado. No se ha seleccionado una opción.', components: [] });
-  //   }
-  // }
+
+  @StringSelect('STRING_SELECT_MENU')
+  public async onStringSelect(@Context() [interaction]) {
+
+    const menu = this.stringSelect.default;
+    const row = new ActionRowBuilder().addComponents(menu);
+
+    const response = await interaction.reply({
+      content: 'Selecciona una opción',
+      components: [row],
+    });
+
+    const collectorFilter = ({ user }) => user.id === interaction.user.id;
+
+    try {
+      const confirmation = await response.awaitMessageComponent({ filter: collectorFilter, time: 60000 });
+      const selectedValues = confirmation.values;
+
+      if (selectedValues.length > 0) {
+        // Tomamos el primer valor seleccionado
+        const selectedValue = selectedValues[0];
+
+        // Actualizamos la respuesta con el valor seleccionado
+        await confirmation.update({ content: `Seleccionaste: ${selectedValue}`,components: []});
+      }
+
+    }catch (e){
+      await response.edit({content:'Tiempo de respuesta agotado. No se ha seleccionado una opción.',components: []})
+    }
+  }
 
 
 }

@@ -3,6 +3,7 @@ import {
   Context,
   SlashCommand,
   SlashCommandContext,
+  StringSelectContext,
 } from 'necord';
 import { ComponentsService } from '../components/components.service';
 
@@ -27,5 +28,13 @@ export class SlashCommandsService {
   })
   public async onButton(@Context() [interaction]){
     return await this.componentService.onButton([interaction])
+  }
+
+  @SlashCommand({
+    name: 'string-select',
+    description: 'String Select',
+  })
+  public async onStringSelect(@Context() [interaction]: StringSelectContext) {
+    return await this.componentService.onStringSelect([interaction]);
   }
 }

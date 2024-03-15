@@ -273,7 +273,94 @@ await interaction.reply({
   components: [rowbuttons],
     });
 ```` 
+Generamos un nuevo slash command ``/botones`` y se veria de la siguiente manera: \
+
 ![img_1.png](images/images-readme/img3.png)
- ___
+*(Imagen ejemplo del código funcional)*
+
+### String select
+
+Para la creacion de de la lista de opciones utilizamos `StringSelectMenuBuilder()`
+```typescript
+new StringSelectMenuBuilder()
+  .setCustomId('pokemons')
+  .setPlaceholder('Pokemones!')
+  .addOptions(
+    new StringSelectMenuOptionBuilder()
+      .setLabel('Bulbasaur')
+      .setDescription('The dual-type Grass/Poison Seed Pokémon.')
+      .setValue('bulbasaur')
+      .setEmoji('💚'),
+    new StringSelectMenuOptionBuilder()
+      .setLabel('Charmander')
+      .setDescription('The Fire-type Lizard Pokémon.')
+      .setValue('charmander')
+      .setEmoji('🧡'),
+    new StringSelectMenuOptionBuilder()
+      .setLabel('Squirtle')
+      .setDescription('The Water-type Tiny Turtle Pokémon.')
+      .setValue('squirtle')
+      .setEmoji('💙'),
+  );
+```
+>> ###### Ver mas en:
+>>[StringSelectMenuBuilder()](https://discord.js.org/docs/packages/builders/main/StringSelectMenuBuilder:Class)\
+>>[StringSelectMenuOptionBuilder()](https://discord.js.org/docs/packages/builders/main/StringSelectMenuOptionBuilder:Class)
+
+Generamos un nuevo slash command ``/string-select`` y se veria de la siguiente manera: 
+
+![img.png](images/images-readme/img4.png)
+![img_1.png](images/images-readme/img5.png)
+*(Imagenes ejemplo del código funcional)*
+
+Vale aclarar que tambien existen otros componentes similares:
+
+<details>
+  <summary><code aria-atomic="true">User Select</code></summary>
+
+```typescript
+new UserSelectMenuBuilder()
+  .setCustomId('USER_SELECT_MENU')
+  .setPlaceholder('Select a user')
+  .setMaxValues(1)
+  .setMinValues(1)
+```
+</details>
+<details>
+  <summary><code aria-atomic="true">Role Select</code></summary>
+
+```typescript
+new RoleSelectMenuBuilder()
+  .setCustomId('ROLE_SELECT_MENU')
+  .setPlaceholder('Select a role')
+  .setMaxValues(1)
+  .setMinValues(1)
+```
+</details>
+<details>
+  <summary><code aria-atomic="true">Mentionable Select</code></summary>
+
+```typescript
+new ChannelSelectMenuBuilder()
+  .setCustomId('CHANNEL_SELECT_MENU')
+  .setPlaceholder('Select a channel')
+  .setMaxValues(1)
+  .setMinValues(1)
+```
+</details>
+<details>
+  <summary><code aria-atomic="true">Channel Select</code></summary>
+
+```typescript
+new MentionableSelectMenuBuilder()
+  .setCustomId('MENTIONABLE_SELECT_MENU')
+  .setPlaceholder('Select a user/role')
+  .setMaxValues(1)
+  .setMinValues(1)
+```
+</details>
+
+Pero al final, la implementación termina siendo igual a la de Buttons.
+___
 
 
